@@ -36,7 +36,7 @@ WARNING: All illegal access operations will be denied in a future release`
 In order to prevent this, an up to date Groovy version must be used, which is only the case with up to date versions of the archetype plugin.  
 
 ## Development
-The latest snapshot lives on the `develop` branch. The latest release lives on the `main` branch. Tags will be created for every release and for every new snapshot.  
+The latest snapshot lives on the `develop` branch. The latest release lives on the `main` branch. A tag will be created for every release.
 
 ## Further Reading
 [https://maven.apache.org/guides/mini/guide-creating-archetypes.html](https://maven.apache.org/guides/mini/guide-creating-archetypes.html)
