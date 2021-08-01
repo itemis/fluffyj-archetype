@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.itemis</groupId>
-		<artifactId>org-parent</artifactId>
-		<version>3</version>
-	</parent>
+    <parent>
+        <groupId>com.itemis</groupId>
+        <artifactId>org-parent</artifactId>
+        <version>3</version>
+    </parent>
 
-	<artifactId>fluffyj.archetype</artifactId>
-	<version>1.5.0</version>
-	<packaging>maven-archetype</packaging>
+    <artifactId>fluffyj.archetype</artifactId>
+    <version>1.6.0-SNAPSHOT</version>
+    <packaging>maven-archetype</packaging>
 
-	<name>Fluffy J Archetype</name>
-	<description>An improved variety of a Maven Java project archetype. Extra fluffy ❤</description>
+    <name>Fluffy J Archetype</name>
+    <description>An improved variety of a Maven Java project archetype. Extra fluffy ❤</description>
 
-	<licenses>
-		<license>
-			<name>Eclipse Public License - v 2.0</name>
-			<url>https://www.eclipse.org/legal/epl-2.0</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Eclipse Public License - v 2.0</name>
+            <url>https://www.eclipse.org/legal/epl-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<developers>
-		<developer>
-			<id>JanMosigItemis</id>
-			<name>Jan Mosig</name>
-			<organization>itemis AG</organization>
-			<organizationUrl>https://www.itemis.com/en</organizationUrl>
-			<email>jan.mosig@itemis.de</email>
-			<timezone>Europe/Berlin</timezone>
-			<url>https://github.com/JanMosigItemis</url>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <id>JanMosigItemis</id>
+            <name>Jan Mosig</name>
+            <organization>itemis AG</organization>
+            <organizationUrl>https://www.itemis.com/en</organizationUrl>
+            <email>jan.mosig@itemis.de</email>
+            <timezone>Europe/Berlin</timezone>
+            <url>https://github.com/JanMosigItemis</url>
+        </developer>
+    </developers>
 
-	<url>https://github.com/itemis/fluffyj-archetype</url>
+    <url>https://github.com/itemis/fluffyj-archetype</url>
 
-	<scm>
-		<connection>scm:git:https://github.com/itemis/fluffyj-archetype</connection>
-		<developerConnection>scm:git:https://github.com/itemis/fluffyj-archetype</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://github.com/itemis/fluffyj-archetype</url>
-	</scm>
+    <scm>
+        <connection>scm:git:https://github.com/itemis/fluffyj-archetype</connection>
+        <developerConnection>scm:git:https://github.com/itemis/fluffyj-archetype</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/itemis/fluffyj-archetype</url>
+    </scm>
 
-	<properties>
-		<java.version>11</java.version>
-		<maven.compiler.release>11</maven.compiler.release>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
-		<maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
-		<resource.delimiter>${*}</resource.delimiter>
-	</properties>
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
+        <resource.delimiter>${*}</resource.delimiter>
+    </properties>
 
-	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.archetype</groupId>
-				<artifactId>archetype-packaging</artifactId>
-				<version>3.0.1</version>
-			</extension>
-		</extensions>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-archetype-plugin</artifactId>
-					<version>3.2.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.2.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>3.0.0-M1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.0.0-M1</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-archetype-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<!-- See https://issues.apache.org/jira/browse/MRESOURCES-190?focusedCommentId=15182734&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-15182734 -->
-				<configuration>
-					<addDefaultExcludes>false</addDefaultExcludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>3.0.1</version>
+            </extension>
+        </extensions>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-archetype-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <!-- See https://issues.apache.org/jira/browse/MRESOURCES-190?focusedCommentId=15182734&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-15182734 -->
+                <configuration>
+                    <addDefaultExcludes>false</addDefaultExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
