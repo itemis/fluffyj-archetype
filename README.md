@@ -34,6 +34,7 @@ WARNING: Use --illegal-access=warn to enable warnings of further illegal reflect
 WARNING: All illegal access operations will be denied in a future release`  
   
 In order to prevent this, an up to date Groovy version must be used, which is only the case with up to date versions of the archetype plugin.  
+>>>>>>> develop
 
 ## Development
 The latest snapshot lives on the `develop` branch. The latest release lives on the `main` branch. A tag will be created for every release.
