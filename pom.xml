@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>fluffyj.archetype</artifactId>
-    <version>1.9.0-SNAPSHOT</version>
+    <version>1.9.0</version>
     <packaging>maven-archetype</packaging>
 
     <name>Fluffy J Archetype</name>
@@ -52,7 +52,7 @@
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.maven-archetype-packaging-version>3.2.1</version.maven-archetype-packaging-version>
+        <version.maven-archetype-plugin>3.2.0</version.maven-archetype-plugin>
         <version.replacer-plugin>1.5.3</version.replacer-plugin>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
@@ -68,7 +68,7 @@
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
                 <artifactId>archetype-packaging</artifactId>
-                <version>${version.maven-archetype-packaging-version}</version>
+                <version>${version.maven-archetype-plugin}</version>
             </extension>
         </extensions>
         <plugins>
