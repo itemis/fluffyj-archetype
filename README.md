@@ -9,11 +9,20 @@ Projects created with this archetype will also contain reasonable default config
 
 ## Build
 `mvn clean install`  
+
+### Maven < 3.5.0
+When building with older Maven versions (looking at you, 3.3.9), make sure to activate the corresponding profile:
+  
+`mvn clean install -Pmvn33`  
+  
+This is required, because Maven switched from Eclipse Aether to Maven Artifact Resolver since 3.5.0.
   
 ## Usage
 Generate a new project with this command:  
 `mvn archetype:generate -B -DarchetypeGroupId=com.itemis -DarchetypeArtifactId=fluffyj.archetype -DarchetypeVersion=1.9.0-SNAPSHOT -DgroupId=de.my.groupid -DartifactId=de.my.groupid.artifactid -Dversion=1.0.0-SNAPSHOT -Dpackage=de.my.groupid.artifactid`
-
+  
+Build the created project with `mvn clean install`. When building with Maven < 3.5.0, you need to activate the appropriate profile: `mvn clean install -Pmvn33`.
+  
 ### Note on usage with Java >=16
 When running Maven with Java >16 make sure to use the latest archetype plugin version (currently 3.2.0). You can force the version by calling Maven like this:  
   

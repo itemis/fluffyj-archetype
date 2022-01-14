@@ -60,8 +60,8 @@
         <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
         <maven-exec-plugin.version>3.0.0</maven-exec-plugin.version>
         <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
         <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
@@ -72,20 +72,20 @@
             plugin processes all contents of the configured resources directories. -->
         <resource.delimiter>${*}</resource.delimiter>
         <guava.version>31.0.1-jre</guava.version>
-        <mockito.version>3.12.4</mockito.version>
+        <mockito.version>4.2.0</mockito.version>
         <hamcrest.version>2.2</hamcrest.version>
         <!-- Be aware: Spotbugs seems incompatible to JDK < 17 since 4.4.2 -->
         <!-- See also profiles section -->
-        <spotbugs.plugin.version>4.5.0.0</spotbugs.plugin.version>
-        <spotbugs.version>4.5.0</spotbugs.version>
+        <spotbugs.plugin.version>4.5.3.0</spotbugs.plugin.version>
+        <spotbugs.version>4.5.3</spotbugs.version>
         <junit.version>5.8.2</junit.version>
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
-        <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
-        <assertj.version>3.21.0</assertj.version>
-        <logback.version>1.2.7</logback.version>
-        <equalsverifier.version>3.7.2</equalsverifier.version>
+        <git-commit-id-plugin.version>5.0.0</git-commit-id-plugin.version>
+        <assertj.version>3.22.0</assertj.version>
+        <logback.version>1.2.10</logback.version>
+        <equalsverifier.version>3.8.2</equalsverifier.version>
         <awaitility.version>4.1.1</awaitility.version>
-        <wiremock.version>2.27.2</wiremock.version>
+        <wiremock.version>2.32.0</wiremock.version>
         <arch.unit.version>0.22.0</arch.unit.version>
         <!-- Currently no custom options are set but we need to define this 
             variable anyway, so that it gets replaced with 'empty' upon runtime. -->
@@ -183,10 +183,10 @@
                 <version>${awaitility.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+            <!-- https://search.maven.org/search?q=a:wiremock-jre8 -->
             <dependency>
                 <groupId>com.github.tomakehurst</groupId>
-                <artifactId>wiremock</artifactId>
+                <artifactId>wiremock-jre8</artifactId>
                 <version>${wiremock.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -256,7 +256,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
+            <artifactId>wiremock-jre8</artifactId>
             <scope>test</scope>
         </dependency>
         <!-- End of test dependencies -->

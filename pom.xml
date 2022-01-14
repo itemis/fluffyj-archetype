@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.itemis</groupId>
         <artifactId>org-parent</artifactId>
-        <version>5.3.0</version>
+        <version>5.4.0</version>
     </parent>
 
     <artifactId>fluffyj.archetype</artifactId>
@@ -52,6 +52,8 @@
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <version.maven-archetype-packaging-version>3.2.1</version.maven-archetype-packaging-version>
+        <version.replacer-plugin>1.5.3</version.replacer-plugin>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
         <resource.delimiter>${*}</resource.delimiter>
@@ -66,7 +68,7 @@
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
                 <artifactId>archetype-packaging</artifactId>
-                <version>3.2.0</version>
+                <version>${version.maven-archetype-packaging-version}</version>
             </extension>
         </extensions>
         <plugins>
@@ -78,29 +80,48 @@
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <!-- See https://issues.apache.org/jira/browse/MRESOURCES-190?focusedCommentId=15182734&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-15182734 -->
                 <configuration>
+                    <encoding>UTF-8</encoding>
+                    <propertiesEncoding>UTF-8</propertiesEncoding>
+                    <!-- See https://issues.apache.org/jira/browse/MRESOURCES-190?focusedCommentId=15182734&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-15182734 -->
                     <addDefaultExcludes>false</addDefaultExcludes>
-                    <overwrite>true</overwrite>
-                    <resources>
-                        <resource>
-                            <directory>src/main/resources</directory>
-                            <filtering>false</filtering>
-                        </resource>
-                        <resource>
-                            <directory>src/test/resources</directory>
-                            <filtering>true</filtering>
-                        </resource>
-                    </resources>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>${version.replacer-plugin}</version>
+                <executions>
+                    <execution>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <delimiters>@</delimiters>
+                    <file>${project.build.testOutputDirectory}/projects/it-basic/goal.txt</file>
+                    <replacements>
+                        <replacement>
+                            <token>fluffy.profiles</token>
+                            <value>${fluffy.profiles}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
     <profiles>
+        <!-- Use this profile when building with Maven <= 3.5.0 due to switch 
+            from Eclipse Aether to Maven Artifact Resolver -->
+        <!-- See https://jaxenter.com/apache-maven-3-5-0-nothing-see-3-4-0-move-along-133180.html -->
         <profile>
             <id>mvn33</id>
             <activation>

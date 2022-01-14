@@ -1,1 +1,1 @@
-clean verify ${fluffy.profiles}
+clean verify @fluffy.profiles@
