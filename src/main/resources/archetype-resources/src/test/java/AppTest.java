@@ -20,28 +20,28 @@ import java.nio.charset.StandardCharsets;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+class AppTest {
     private static final Logger LOG = LoggerFactory.getLogger(AppTest.class);
 
     private WireMockServer wireMockServer;
     private int port = -1;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         wireMockServer = new WireMockServer(new WireMockConfiguration().dynamicPort().usingFilesUnderDirectory("src/test/resources/wiremock"));
         wireMockServer.start();
         port = wireMockServer.port();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         wireMockServer.resetAll();
         wireMockServer.stop();
         port = -1;
     }
 
     @Test
-    public void test_something() throws Exception {
+    void test_something() throws Exception {
         assertThat(true).isTrue();
 
         App.main(null);
