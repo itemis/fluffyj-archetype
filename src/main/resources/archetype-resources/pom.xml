@@ -57,7 +57,7 @@
             <maven.compiler.target>${java.version}</maven.compiler.target> -->
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
-        <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
@@ -349,6 +349,9 @@
                                 <addClasspath>true</addClasspath>
                                 <mainClass>${package}.App</mainClass>
                             </manifest>
+                            <manifestEntries>
+                                <Automatic-Module-Name>${package}</Automatic-Module-Name>
+                            </manifestEntries>
                         </archive>
                     </configuration>
                 </plugin>
@@ -357,7 +360,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <release>11</release>
+                        <release>${maven.compiler.release}</release>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -388,41 +391,30 @@
         </pluginManagement>
 
         <plugins>
-            <!-- <plugin>
-                <groupId>io.github.git-commit-id</groupId>
-                <artifactId>git-commit-id-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <verbose>false</verbose>
-                    <excludeProperties>
-                        <excludeProperty>git.user.*</excludeProperty>
-                        <excludeProperty>git.build.user.*</excludeProperty>
-                        <excludeProperty>git.closest.tag.*</excludeProperty>
-                        <excludeProperty>git.commit.message.*</excludeProperty>
-                        <excludeProperty>git.commit.user.*</excludeProperty>
-                    </excludeProperties>
-                    <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-                </configuration>
-            </plugin> -->
+            <!-- <plugin> <groupId>io.github.git-commit-id</groupId> <artifactId>git-commit-id-maven-plugin</artifactId> 
+                <executions> <execution> <goals> <goal>revision</goal> </goals> </execution> 
+                </executions> <configuration> <verbose>false</verbose> <excludeProperties> 
+                <excludeProperty>git.user.*</excludeProperty> <excludeProperty>git.build.user.*</excludeProperty> 
+                <excludeProperty>git.closest.tag.*</excludeProperty> <excludeProperty>git.commit.message.*</excludeProperty> 
+                <excludeProperty>git.commit.user.*</excludeProperty> </excludeProperties> 
+                <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat> <generateGitPropertiesFile>true</generateGitPropertiesFile> 
+                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename> 
+                </configuration> </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <!-- Try to avoid concurrency issues as much as possible. -->
-                    <!-- This will have a negative impact on memory consumption 
-                        an build speed. -->
-                    <reuseForks>false</reuseForks>
+                    <!-- When specifying <reuseForks>false</reuseForks> together 
+                        with <forkCount>1</forkCount>, the tests are going to run directly inside 
+                        the mvn JVM. This means, the ${argLine} cannot be passed to this JVM anymore, 
+                        because it is already running. If you want to use these specific settings, 
+                        the solution is to use MAVEN_OPTS="\-\-add-modules .. mvn clean verify". -->
+                    <reuseForks>true</reuseForks>
+                    <forkCount>1</forkCount>
                     <!-- $argLine is 'injected' by JaCoCo and contains instructions 
                         to setup its agent -->
-                    <argLine>${argLine} ${custom.jvm.options}</argLine>
+                    <argLine>${argLine}</argLine>
+                    <argLine>${custom.jvm.options}</argLine>
                 </configuration>
             </plugin>
             <plugin>
