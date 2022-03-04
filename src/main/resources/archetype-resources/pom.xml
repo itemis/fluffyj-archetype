@@ -88,7 +88,8 @@
         <wiremock.version>2.32.0</wiremock.version>
         <arch.unit.version>0.22.0</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
-        <!-- This usually has only a very small impact on performance and memory usage. -->
+        <!-- This usually has only a very small impact on performance and 
+            memory usage. -->
         <!-- See https://stackoverflow.com/a/57957031 -->
         <!-- See https://kupczynski.info/2018/05/29/jvm-class-data-sharing.html -->
         <custom.jvm.options>-Xshare:off</custom.jvm.options>
@@ -126,13 +127,6 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
-            <dependency>
-                <groupId>org.junit.vintage</groupId>
-                <artifactId>junit-vintage-engine</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -331,8 +325,8 @@
                     <version>${spotbugs.plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>pl.project13.maven</groupId>
-                    <artifactId>git-commit-id-plugin</artifactId>
+                    <groupId>io.github.git-commit-id</groupId>
+                    <artifactId>git-commit-id-maven-plugin</artifactId>
                     <version>${git-commit-id-plugin.version}</version>
                 </plugin>
                 <plugin>
@@ -394,15 +388,30 @@
         </pluginManagement>
 
         <plugins>
-            <!-- <plugin> <groupId>pl.project13.maven</groupId> <artifactId>git-commit-id-plugin</artifactId> 
-                <executions> <execution> <goals> <goal>revision</goal> </goals> </execution> 
-                </executions> <configuration> <verbose>false</verbose> <excludeProperties> 
-                <excludeProperty>git.user.*</excludeProperty> <excludeProperty>git.build.user.*</excludeProperty> 
-                <excludeProperty>git.closest.tag.*</excludeProperty> <excludeProperty>git.commit.message.*</excludeProperty> 
-                <excludeProperty>git.commit.user.*</excludeProperty> </excludeProperties> 
-                <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat> <generateGitPropertiesFile>true</generateGitPropertiesFile> 
-                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename> 
-                </configuration> </plugin> -->
+            <!-- <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <verbose>false</verbose>
+                    <excludeProperties>
+                        <excludeProperty>git.user.*</excludeProperty>
+                        <excludeProperty>git.build.user.*</excludeProperty>
+                        <excludeProperty>git.closest.tag.*</excludeProperty>
+                        <excludeProperty>git.commit.message.*</excludeProperty>
+                        <excludeProperty>git.commit.user.*</excludeProperty>
+                    </excludeProperties>
+                    <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                </configuration>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
