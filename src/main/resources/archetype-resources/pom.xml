@@ -49,43 +49,41 @@
     <url>project.website</url>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- Only required for java < 9 <maven.compiler.source>${java.version}</maven.compiler.source> 
-            <maven.compiler.target>${java.version}</maven.compiler.target> -->
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
-        <maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
-        <maven-exec-plugin.version>3.0.0</maven-exec-plugin.version>
-        <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
-        <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
         <!-- Make sure we can use variables like ${variable.name} in resource 
             files. These will be expanded by the maven build as soon as the resources 
             plugin processes all contents of the configured resources directories. -->
         <resource.delimiter>${*}</resource.delimiter>
+        <!-- Only required for java < 9 <maven.compiler.source>${java.version}</maven.compiler.source> 
+            <maven.compiler.target>${java.version}</maven.compiler.target> -->
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <maven-shade-plugin.version>3.3.0</maven-shade-plugin.version>
+        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-exec-plugin.version>3.1.0</maven-exec-plugin.version>
+        <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
+        <maven-install-plugin.version>3.0.1</maven-install-plugin.version>
         <guava.version>31.1-jre</guava.version>
-        <mockito.version>4.3.1</mockito.version>
+        <mockito.version>4.6.1</mockito.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <!-- Be aware: Spotbugs seems incompatible to JDK < 17 since 4.4.2 -->
-        <!-- See also profiles section -->
-        <spotbugs.plugin.version>4.5.3.0</spotbugs.plugin.version>
-        <spotbugs.version>4.5.3</spotbugs.version>
-        <junit.version>5.8.2</junit.version>
-        <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
+        <spotbugs.plugin.version>4.7.1.1</spotbugs.plugin.version>
+        <spotbugs.version>4.7.1</spotbugs.version>
+        <junit.version>5.9.0</junit.version>
+        <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
         <git-commit-id-plugin.version>5.0.0</git-commit-id-plugin.version>
-        <assertj.version>3.22.0</assertj.version>
-        <logback.version>1.2.10</logback.version>
-        <equalsverifier.version>3.9</equalsverifier.version>
-        <awaitility.version>4.1.1</awaitility.version>
-        <wiremock.version>2.32.0</wiremock.version>
+        <assertj.version>3.23.1</assertj.version>
+        <logback.version>1.2.11</logback.version>
+        <equalsverifier.version>3.10.1</equalsverifier.version>
+        <awaitility.version>4.2.0</awaitility.version>
+        <wiremock.version>2.33.2</wiremock.version>
         <arch.unit.version>0.23.1</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and 
@@ -391,15 +389,6 @@
         </pluginManagement>
 
         <plugins>
-            <!-- <plugin> <groupId>io.github.git-commit-id</groupId> <artifactId>git-commit-id-maven-plugin</artifactId> 
-                <executions> <execution> <goals> <goal>revision</goal> </goals> </execution> 
-                </executions> <configuration> <verbose>false</verbose> <excludeProperties> 
-                <excludeProperty>git.user.*</excludeProperty> <excludeProperty>git.build.user.*</excludeProperty> 
-                <excludeProperty>git.closest.tag.*</excludeProperty> <excludeProperty>git.commit.message.*</excludeProperty> 
-                <excludeProperty>git.commit.user.*</excludeProperty> </excludeProperties> 
-                <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat> <generateGitPropertiesFile>true</generateGitPropertiesFile> 
-                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename> 
-                </configuration> </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -449,8 +438,7 @@
                     JVM running the maven process which then calls this plugin. -->
                 <configuration>
                     <executable>java</executable>
-                    <commandlineArgs>-jar
-                        ${project.build.directory}/${project.build.finalName}.jar</commandlineArgs>
+                    <commandlineArgs>-jar ${project.build.directory}/${project.build.finalName}-shaded.jar</commandlineArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -464,30 +452,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>JDK16_or_earlier</id>
-            <activation>
-                <jdk>(,17)</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <!-- Required to support null annotation checks according 
-                        to JSR-305 -->
-                    <groupId>com.github.spotbugs</groupId>
-                    <artifactId>spotbugs</artifactId>
-                    <version>4.2.0</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs-maven-plugin</artifactId>
-                        <version>4.2.0</version>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>mvn33</id>
             <activation>
@@ -560,6 +524,7 @@
                                         <!-- Only specify this if you are 
                                             sure that no dependency requires the settings from its own MANIFEST.MF file -->
                                         <exclude>META-INF/MANIFEST.MF</exclude>
+                                        <exclude>META-INF/DEPENDENCIES</exclude>
                                         <!-- filter out signature files from 
                                             signed dependencies, else repackaging fails with security exception -->
                                         <exclude>META-INF/*.SF</exclude>

@@ -8,7 +8,7 @@ The latest release version always tries to include the latest versions of all us
 Projects created with this archetype will also contain reasonable default configuration for your favorit IDE. Have a look at the directory `ide_setup` for details.  
 
 ## Build  
-Note: JDK >=17 is required for the build. 
+Note: JDK >=11 is required for the build. 
   
 `mvn clean install`  
 

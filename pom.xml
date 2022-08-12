@@ -90,7 +90,6 @@
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.google.code.maven-replacer-plugin</groupId>
                 <artifactId>replacer</artifactId>
@@ -114,7 +113,6 @@
                     </replacements>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
