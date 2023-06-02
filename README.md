@@ -26,7 +26,7 @@ Generate a new project with this command:
 Build the created project with `mvn clean install`. When building with Maven < 3.5.0, you need to activate the appropriate profile: `mvn clean install -Pmvn33`.
   
 ### Note on usage with Java >=16
-When running Maven with Java >16 make sure to use the latest archetype plugin version (currently 3.2.0). You can force the version by calling Maven like this:  
+When running Maven with Java >16 make sure to use archetype plugin version >=3.2.0. You can force the version by calling Maven like this:  
   
 `mvn org.apache.maven.plugins:maven-archetype-plugin:3.2.0:generate ...`  
   
