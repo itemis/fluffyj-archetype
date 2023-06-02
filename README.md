@@ -21,7 +21,7 @@ This is required, because Maven switched from Eclipse Aether to Maven Artifact R
   
 ## Usage
 Generate a new project with this command:  
-`mvn archetype:generate -B -DarchetypeGroupId=com.itemis -DarchetypeArtifactId=fluffyj.archetype -DarchetypeVersion=1.16.0-SNAPSHOT -DgroupId=de.my.groupid -DartifactId=de.my.groupid.artifactid -Dversion=1.0.0-SNAPSHOT -Dpackage=de.my.groupid.artifactid`
+`mvn archetype:generate -B -DarchetypeGroupId=com.itemis -DarchetypeArtifactId=fluffyj.archetype -DarchetypeVersion=1.16.0 -DgroupId=de.my.groupid -DartifactId=de.my.groupid.artifactid -Dversion=1.0.0-SNAPSHOT -Dpackage=de.my.groupid.artifactid`
   
 Build the created project with `mvn clean install`. When building with Maven < 3.5.0, you need to activate the appropriate profile: `mvn clean install -Pmvn33`.
   
