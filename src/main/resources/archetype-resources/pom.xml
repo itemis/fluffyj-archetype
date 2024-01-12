@@ -49,8 +49,8 @@
     <url>project.website</url>
 
     <properties>
-        <java.version>11</java.version>
-        <maven.compiler.release>11</maven.compiler.release>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
@@ -61,30 +61,30 @@
         <resource.delimiter>${*}</resource.delimiter>
         <!-- Only required for java < 9 <maven.compiler.source>${java.version}</maven.compiler.source> 
             <maven.compiler.target>${java.version}</maven.compiler.target> -->
-        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
-        <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+        <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
+        <maven-shade-plugin.version>3.5.1</maven-shade-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <maven-exec-plugin.version>3.1.0</maven-exec-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-exec-plugin.version>3.1.1</maven-exec-plugin.version>
         <maven-help-plugin.version>3.4.0</maven-help-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
-        <guava.version>32.0.0-jre</guava.version>
-        <mockito.version>5.3.1</mockito.version>
+        <guava.version>33.0.0-jre</guava.version>
+        <mockito.version>5.8.0</mockito.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <spotbugs.plugin.version>4.7.3.4</spotbugs.plugin.version>
-        <spotbugs.version>4.7.3</spotbugs.version>
-        <junit.version>5.9.3</junit.version>
-        <jacoco.plugin.version>0.8.10</jacoco.plugin.version>
-        <git-commit-id-plugin.version>6.0.0</git-commit-id-plugin.version>
-        <assertj.version>3.24.2</assertj.version>
-        <logback.version>1.4.7</logback.version>
-        <equalsverifier.version>3.14.2</equalsverifier.version>
+        <spotbugs.plugin.version>4.8.2.0</spotbugs.plugin.version>
+        <spotbugs.version>4.8.3</spotbugs.version>
+        <junit.version>5.10.1</junit.version>
+        <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
+        <git-commit-id-plugin.version>7.0.0</git-commit-id-plugin.version>
+        <assertj.version>3.25.1</assertj.version>
+        <logback.version>1.4.14</logback.version>
+        <equalsverifier.version>3.15.6</equalsverifier.version>
         <awaitility.version>4.2.0</awaitility.version>
-        <wiremock.version>2.35.0</wiremock.version>
-        <arch.unit.version>1.0.1</arch.unit.version>
+        <wiremock.version>3.3.1</wiremock.version>
+        <arch.unit.version>1.2.1</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and 
             memory usage. -->
@@ -179,8 +179,8 @@
             </dependency>
             <!-- https://search.maven.org/search?q=a:wiremock-jre8 -->
             <dependency>
-                <groupId>com.github.tomakehurst</groupId>
-                <artifactId>wiremock-jre8</artifactId>
+                <groupId>org.wiremock</groupId>
+                <artifactId>wiremock</artifactId>
                 <version>${wiremock.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -249,8 +249,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
             <scope>test</scope>
         </dependency>
         <!-- End of test dependencies -->
@@ -359,6 +359,12 @@
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <release>${maven.compiler.release}</release>
+                        <compilerArgs>
+                            <!-- Activate this if you are compiling with JDK >= 21 -->
+                            <!-- Fully enable annotation processing and compilation in order to avoid a warning during build -->
+                            <!-- See https://bugs.openjdk.org/browse/JDK-8315534 -->
+                            <!-- <arg>-proc:full</arg> -->
+                        </compilerArgs>
                     </configuration>
                 </plugin>
                 <plugin>
