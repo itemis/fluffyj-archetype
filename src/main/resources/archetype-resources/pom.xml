@@ -76,10 +76,10 @@
         <hamcrest.version>2.2</hamcrest.version>
         <spotbugs.plugin.version>4.8.3.0</spotbugs.plugin.version>
         <spotbugs.version>4.8.3</spotbugs.version>
-        <junit.version>5.10.1</junit.version>
+        <junit.version>5.10.2</junit.version>
         <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
         <git-commit-id-plugin.version>7.0.0</git-commit-id-plugin.version>
-        <assertj.version>3.25.2</assertj.version>
+        <assertj.version>3.25.3</assertj.version>
         <logback.version>1.4.14</logback.version>
         <equalsverifier.version>3.15.6</equalsverifier.version>
         <awaitility.version>4.2.0</awaitility.version>
