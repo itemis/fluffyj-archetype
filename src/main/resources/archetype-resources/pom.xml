@@ -71,7 +71,7 @@
         <maven-exec-plugin.version>3.1.1</maven-exec-plugin.version>
         <maven-help-plugin.version>3.4.0</maven-help-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
-        <guava.version>33.0.0-jre</guava.version>
+        <guava.version>33.1.0-jre</guava.version>
         <mockito.version>5.11.0</mockito.version>
         <hamcrest.version>2.2</hamcrest.version>
         <spotbugs.plugin.version>4.8.3.1</spotbugs.plugin.version>
