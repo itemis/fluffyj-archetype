@@ -52,7 +52,7 @@
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.maven-archetype-plugin>3.2.0</version.maven-archetype-plugin>
+        <version.maven-archetype-plugin>3.3.0</version.maven-archetype-plugin>
         <version.replacer-plugin>1.5.3</version.replacer-plugin>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
