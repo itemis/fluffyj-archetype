@@ -22,7 +22,7 @@ jobs:
           cache: 'maven'
       - name: Build & Deploy
         run: |
-          mvn -U clean deploy -P release
+          mvn -U -B clean deploy -P release
         env:
           SIGN_KEY: ${{ secrets.ITEMIS_OSS_GPG_PRIVATE_KEY }}
           SIGN_KEY_PASS: ${{ secrets.ITEMIS_OSS_GPG_PRIVATE_KEY_PASSPHRASE }}
