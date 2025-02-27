@@ -54,7 +54,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.maven-archetype-plugin>3.3.1</version.maven-archetype-plugin>
-        <version.maven-deploy-plugin>3.1.3</version.maven-deploy-plugin>
+        <version.maven-deploy-plugin>3.1.4</version.maven-deploy-plugin>
         <version.replacer-plugin>1.5.3</version.replacer-plugin>
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
