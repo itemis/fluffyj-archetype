@@ -73,18 +73,18 @@
         <maven-exec-plugin.version>3.5.0</maven-exec-plugin.version>
         <maven-help-plugin.version>3.5.1</maven-help-plugin.version>
         <maven-install-plugin.version>3.1.3</maven-install-plugin.version>
-        <guava.version>33.4.6-jre</guava.version>
-        <mockito.version>5.16.1</mockito.version>
+        <guava.version>33.4.8-jre</guava.version>
+        <mockito.version>5.17.0</mockito.version>
         <hamcrest.version>3.0</hamcrest.version>
         <spotbugs.plugin.version>4.9.3.0</spotbugs.plugin.version>
         <spotbugs.version>4.9.3</spotbugs.version>
-        <junit.version>5.12.1</junit.version>
-        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
+        <junit.version>5.12.2</junit.version>
+        <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <assertj.version>3.27.1</assertj.version>
         <logback.version>1.5.18</logback.version>
-        <equalsverifier.version>3.19.2</equalsverifier.version>
+        <equalsverifier.version>3.19.4</equalsverifier.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <wiremock.version>3.12.1</wiremock.version>
+        <wiremock.version>3.13.0</wiremock.version>
         <arch.unit.version>1.4.0</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and memory usage. -->
