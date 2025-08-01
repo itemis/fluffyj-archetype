@@ -78,11 +78,11 @@
         <hamcrest.version>3.0</hamcrest.version>
         <spotbugs.plugin.version>4.9.3.2</spotbugs.plugin.version>
         <spotbugs.version>4.9.3</spotbugs.version>
-        <junit.version>5.13.2</junit.version>
+        <junit.version>5.13.4</junit.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <assertj.version>3.27.1</assertj.version>
         <logback.version>1.5.18</logback.version>
-        <equalsverifier.version>4.0.3</equalsverifier.version>
+        <equalsverifier.version>4.0.7</equalsverifier.version>
         <awaitility.version>4.3.0</awaitility.version>
         <wiremock.version>3.13.1</wiremock.version>
         <arch.unit.version>1.4.1</arch.unit.version>
@@ -420,6 +420,9 @@
                 </executions>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                    <skipEmptyReport>true</skipEmptyReport>
+                    <xmlOutput>false</xmlOutput>
+                    <htmlOutput>false</htmlOutput>
                 </configuration>
             </plugin>
             <plugin>
